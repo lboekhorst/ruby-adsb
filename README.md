@@ -35,12 +35,34 @@ Get the address of the sender:
 address = message.address
 ```
 
+Get the type of message:
+
+```ruby
+type = message.type
+```
+
+The type of message is either `:identification` or `:velocity`.
+
 ### Identification
 
 Get the reported identification:
 
 ```ruby
 identification = message.identification
+```
+
+## Velocity
+
+Get the reported heading:
+
+```ruby
+heading = message.heading
+```
+
+Get the reported velocity:
+
+```ruby
+velocity = message.velocity
 ```
 
 ## Development

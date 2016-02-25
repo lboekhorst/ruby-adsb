@@ -39,6 +39,7 @@ module ADSB
     def type
       case type_code
         when 1, 2, 3, 4 then :identification
+        when 19 then :velocity
       end
     end
 

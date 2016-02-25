@@ -16,6 +16,11 @@ class MessageTest < Minitest::Test
     assert_equal(17, message.downlink_format)
   end
 
+  def test_that_it_has_a_heading
+    message = ADSB::Message.new('8D485020994409940838175B284F')
+    assert_in_delta(182.88, message.heading)
+  end
+
   def test_that_it_has_an_identification
     message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     assert_equal('KLM1023', message.identification)
@@ -24,5 +29,10 @@ class MessageTest < Minitest::Test
   def test_that_it_has_a_type_code
     message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     assert_equal(4, message.type_code)
+  end
+
+  def test_that_it_has_a_velocity
+    message = ADSB::Message.new('8D485020994409940838175B284F')
+    assert_in_delta(159.201, message.velocity)
   end
 end
