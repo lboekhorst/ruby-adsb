@@ -21,6 +21,28 @@ Or install it yourself as:
 
     $ gem install ruby-adsb
 
+## Usage
+
+Create a new message:
+
+```ruby
+message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
+```
+
+Get the address of the sender:
+
+```ruby
+address = message.address
+```
+
+### Identification
+
+Get the reported identification:
+
+```ruby
+identification = message.identification
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
