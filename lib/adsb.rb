@@ -1,4 +1,6 @@
+require "adsb/cpr/report"
 require "adsb/message"
 require "adsb/messages/identification"
+require "adsb/messages/position"
 require "adsb/messages/velocity"
 require "adsb/version"

@@ -41,7 +41,7 @@ Get the type of message:
 type = message.type
 ```
 
-The type of message is either `:identification` or `:velocity`.
+The type of message is either `:identification`, `:position`, or `:velocity`.
 
 ### Identification
 
@@ -49,6 +49,35 @@ Get the reported identification:
 
 ```ruby
 identification = message.identification
+```
+
+### Position
+
+Create a new compact position report from a message of even parity and a message
+of odd parity:
+
+```ruby
+even = ADSB::Message.new('8D40621D58C382D690C8AC2863A7')
+odd = ADSB::Message.new('8D40621D58C386435CC412692AD6')
+report = ADSB::CPR::Report.new(even, odd)
+```
+
+Get the reported altitude:
+
+```ruby
+altitude = report.altitude
+```
+
+Get the reported latitude:
+
+```ruby
+latitude = report.latitude
+```
+
+Get the reported longitude:
+
+```ruby
+longitude = report.longitude
 ```
 
 ### Velocity

@@ -1,15 +1,19 @@
 module ADSB
   class Message
-
+    attr_reader :created_at
+    
     # Create a new message.
     #
     # ==== Attributes
     # * +body+ - The body of the message as a hexadecimal string
+    # * +created_at+ - The time at which the message was created
     #
     # ==== Examples
     #   message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
-    def initialize body
+    #   message = ADSB::Message.new('8D4840D6202CC371C32CE0576098', Time.now)
+    def initialize body, created_at = Time.now
       @body = body.hex.to_s(2)
+      @created_at = created_at
       decoder = Kernel.const_get("ADSB::Messages::#{type.to_s.capitalize}")
       extend(decoder)
     end
@@ -39,6 +43,7 @@ module ADSB
     def type
       case type_code
         when 1, 2, 3, 4 then :identification
+        when 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 then :position
         when 19 then :velocity
       end
     end

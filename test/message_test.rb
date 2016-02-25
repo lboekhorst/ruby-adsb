@@ -6,6 +6,11 @@ class MessageTest < Minitest::Test
     assert_equal('4840d6', message.address)
   end
 
+  def test_that_it_has_an_altitude
+    message = ADSB::Message.new('8D40621D58C382D690C8AC2863A7')
+    assert_equal(38000, message.altitude)
+  end
+
   def test_that_it_has_data
     message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     assert_equal('00100000001011001100001101110001110000110010110011100000', message.data)
@@ -24,6 +29,16 @@ class MessageTest < Minitest::Test
   def test_that_it_has_an_identification
     message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     assert_equal('KLM1023', message.identification)
+  end
+
+  def test_that_it_has_a_latitude
+    message = ADSB::Message.new('8D40621D58C382D690C8AC2863A7')
+    assert_equal(0.70953369140625, message.latitude)
+  end
+
+  def test_that_it_has_a_longitude
+    message = ADSB::Message.new('8D40621D58C382D690C8AC2863A7')
+    assert_equal(0.391937255859375, message.longitude)
   end
 
   def test_that_it_has_a_type_code
