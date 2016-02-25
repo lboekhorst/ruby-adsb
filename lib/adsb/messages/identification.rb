@@ -1,5 +1,5 @@
 module ADSB
-  module Decoders
+  module Messages
     module Identification
 
       # Get the reported identification.

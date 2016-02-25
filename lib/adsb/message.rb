@@ -10,7 +10,7 @@ module ADSB
     #   message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     def initialize body
       @body = body.hex.to_s(2)
-      decoder = Kernel.const_get("ADSB::Decoders::#{type.to_s.capitalize}")
+      decoder = Kernel.const_get("ADSB::Messages::#{type.to_s.capitalize}")
       extend(decoder)
     end
 

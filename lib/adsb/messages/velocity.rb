@@ -1,5 +1,5 @@
 module ADSB
-  module Decoders
+  module Messages
     module Velocity
 
       # Get the reported heading.
