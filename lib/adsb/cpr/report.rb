@@ -1,6 +1,6 @@
 module ADSB
   module CPR
-    class Report
+    class Report < SimpleDelegator
 
       # Create a new compact position report.
       #
@@ -16,6 +16,7 @@ module ADSB
         @even = even
         @odd = odd
         @parity = even.created_at > odd.created_at ? 0 : 1
+        super @parity.eql?(0) ? @even : @odd
       end
 
       # Get the reported altitude in feet.

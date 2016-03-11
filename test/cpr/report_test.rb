@@ -7,6 +7,10 @@ class ReportTest < Minitest::Test
     @report = ADSB::CPR::Report.new(even, odd)
   end
 
+  def test_that_it_has_an_address
+    assert_equal('40621d', @report.address)
+  end
+
   def test_that_it_has_an_altitude
     assert_equal(38000, @report.altitude)
   end
