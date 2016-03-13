@@ -1,3 +1,5 @@
+require 'delegate'
+
 module ADSB
   module CPR
     class Report < SimpleDelegator
