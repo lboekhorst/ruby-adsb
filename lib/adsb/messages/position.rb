@@ -14,6 +14,19 @@ module ADSB
       def longitude
         @body[71..87].to_i(2).to_f / 131072
       end
+
+      def odd?
+        @body[53].to_i == 1
+      end
+
+      def even?
+        @body[53].to_i == 0
+      end
+
+      def cpr_odd_even_frame_flag
+        even? ? :even : :odd
+      end
+
     end
   end
 end
