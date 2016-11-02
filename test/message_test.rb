@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class MessageTest < Minitest::Test
+
+  def setup
+    @position_message = '8d4baa86580902516fe20165dc9c'
+  end
+
   def test_that_it_has_an_address
     message = ADSB::Message.new('8D4840D6202CC371C32CE0576098')
     assert_equal('4840d6', message.address)
@@ -49,5 +54,20 @@ class MessageTest < Minitest::Test
   def test_that_it_has_a_velocity
     message = ADSB::Message.new('8D485020994409940838175B284F')
     assert_in_delta(159.201, message.velocity)
+  end
+
+  def test_that_it_is_odd
+    message = ADSB::Message.new(@position_message)
+    assert_equal(false, message.odd?)
+  end
+
+  def test_that_it_is_even
+    message = ADSB::Message.new(@position_message)
+    assert_equal(true, message.even?)
+  end
+
+  def test_that_the_cprflag_is_even_or_odd
+    message = ADSB::Message.new(@position_message)
+    assert_equal(:even, message.cpr_odd_even_frame_flag)
   end
 end
