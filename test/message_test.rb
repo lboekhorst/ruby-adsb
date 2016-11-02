@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MessageTest < Minitest::Test
-
   def setup
     @position_message = '8d4baa86580902516fe20165dc9c'
   end
@@ -66,8 +65,8 @@ class MessageTest < Minitest::Test
     assert_equal(true, message.even?)
   end
 
-  def test_that_the_cprflag_is_even_or_odd
+  def test_that_the_parity_is_even
     message = ADSB::Message.new(@position_message)
-    assert_equal(:even, message.cpr_odd_even_frame_flag)
+    assert_equal(:even, message.parity)
   end
 end

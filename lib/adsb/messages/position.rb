@@ -23,10 +23,9 @@ module ADSB
         @body[53].to_i == 0
       end
 
-      def cpr_odd_even_frame_flag
+      def parity
         even? ? :even : :odd
       end
-
     end
   end
 end
